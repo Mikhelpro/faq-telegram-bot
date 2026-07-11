@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: faq-telegram-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false
+      - key: MATCH_THRESHOLD
+        value: "65"
+      - key: FORWARD_UNANSWERED
+        value: "true"
+      - key: DB_PATH
+        value: faq_bot.db
+      - key: MAPS_LINK
+        value: https://maps.app.goo.gl/ExwuLXpEFckRJnzXA
+      - key: CHANNEL_LINK
+        value: https://t.me/medstarinternalclinic
